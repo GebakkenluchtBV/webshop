@@ -29,15 +29,15 @@ echo "
 
 		<div class="titlebar">
 
-			<a href="index.html">
+			<a href="index.php">
 				Home
 			</a>
 
-			<a href="webshop.html">
+			<a href="webshop.php">
 				Webshop
 			</a>
 
-			<a href="contact.html">
+			<a href="contact.php">
 				Contact
 			</a>
 

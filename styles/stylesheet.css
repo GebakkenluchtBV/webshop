@@ -1,3 +1,7 @@
+/*
+Main site functions
+*/
+
 body {
 	margin: 0;
 	padding: 0;
@@ -28,10 +32,6 @@ h3 {
 	font-size: 1.6em;
 }
 
-a:hover {
-	text-decoration: underline;
-}
-
 img.border {
 	border: 6px solid #EEE7DF;
 }
@@ -50,7 +50,9 @@ img.aligncenter {
 }
 
 
-
+/*
+T-t-t-t-t-time for divjes
+*/
 
 
 .main {
@@ -68,13 +70,13 @@ img.aligncenter {
 
 .titlebar {
 	background-color: lightgray;
+	width: 600px;
+	height: 40px;
 
 }
 
 .titlebar a {
-	display: block;
 	float: left;
-	height: 60px;
 	margin: 10px;
 	color: red;
 }
@@ -85,7 +87,7 @@ img.aligncenter {
 }
 
 .footer{
-	background-color: gray;
+	background-color: lightgray;
 
 }
 
