@@ -1,5 +1,5 @@
 <?php
-echo "
+echo '
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,5 +69,5 @@ echo "
 
 	</body>
 </html>
-";
+';
 ?>
