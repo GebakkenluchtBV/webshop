@@ -1,6 +1,7 @@
 main {
 width: 600px;
 position: center;
+background
 }
 
 header {
@@ -12,9 +13,26 @@ titlebar {
 }
 
 content{
+	background-color: lightblue;
 
 }
 
 footer{
 
+}
+
+p {
+	font-family: sans-serif;
+}
+
+p.normal {
+	font-style: normal:;
+}
+
+p.bold {
+	font-style: oblique;
+}
+
+p.italic {
+	font-style: italic;
 }
