@@ -5,6 +5,8 @@ require '../database.php';
 if (isset($_GET['id'])) {
   $sql = "SELECT * FROM `orders` NATURAL JOIN `customers` WHERE orders.order_id='".$_GET["id"]."';";
   $result = $conn->query($sql);
+  $sql_products = "SELECT * FROM `order_products` NATURAL JOIN `products` WHERE order_products.order_id='".$_GET["id"]."';";
+  $products = $conn->query($sql_products);
 
   if ($result->num_rows > 0) {
     // output data of each row
@@ -12,17 +14,43 @@ if (isset($_GET['id'])) {
         echo '
           <div class="order-card">
             <h1>Bestelling</h1>
-            <ul>
-              <li><strong>Nummer:</strong> '.$row["order_id"].'</li>
-              <li><strong>Besteld op:</strong> '.$row["orderedAt"].'</li>
-              <li><strong>Status:</strong> '.$row["status"].'</li>
-              <li><strong>Bedrag:</strong> '.$row["totalPrice"].'</li>
-              <li><strong>Klant: </strong>
-                <a href="/customers/index.php?id='.$row["customer_id"].'">
-                 '.$row["firstName"].' '.$row["lastName"].'
-                </a>
-              </li>
-            </ul>
+            <p>
+              <strong>Nummer:</strong> '.$row["order_id"].'<br>
+              <strong>Besteld op:</strong> '.$row["orderedAt"].'<br>
+              <strong>Status:</strong> '.$row["status"].'<br>
+              <strong>Bedrag:</strong> €'.($row["totalPrice"]/100).'<br>
+              <strong>Klant: </strong>
+              <a href="/customers/index.php?id='.$row["customer_id"].'">
+               '.$row["firstName"].' '.$row["lastName"].'
+              </a>
+            </p>
+            <h2>Artikelen</h2>
+            <table class="order-table">
+              <thead>
+                <tr>
+                  <th>Artikel</th>
+                  <th>Aantal</th>
+                  <th>Prijs</th>
+                </tr>
+              </thead>
+        ';
+        if ($products->num_rows > 0) {
+          while($item = $products->fetch_assoc()) {
+            echo '
+              <tr>
+                <td>
+                  <a href="/products/index.php?id='.$item["product_id"].'">
+                    '.$item["name"].'
+                  </a>
+                </td>
+                <td>'.$item["amount"].'</td>
+                <td>€'.($item["price"]/100).'</td>
+              </tr>
+            ';
+          }
+        }
+        echo '
+            </table>
           </div>
         ';
       }
@@ -37,7 +65,7 @@ if (isset($_GET['id'])) {
     // output data of each row
     echo '
     <h1>Bestellingen</h1>
-    <table class="customers-table">
+    <table class="orders-table">
       <thead>
         <tr>
           <th>Nummer</th>
