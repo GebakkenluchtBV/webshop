@@ -35,6 +35,10 @@
 				Producten
 			</a>
 
+			<a href="/customers">
+				Klanten
+			</a>
+
 			<a href="contact.php">
 				Contact
 			</a>

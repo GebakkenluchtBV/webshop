@@ -112,3 +112,35 @@ INSERT INTO `products` (
 ) VALUES (
 	"XXL luchtkasteel", 15000, "Super lomp groot kasteel voor in de lucht.", 2, 2
 );
+
+INSERT INTO `customers` (
+`id` ,
+`firstName` ,
+`lastName` ,
+`address` ,
+`postalCode` ,
+`city` ,
+`country` ,
+`phoneNumber` ,
+`IBAN` ,
+`IBANholder`
+)
+VALUES (
+NULL , 'Theo', 'de Vries', 'Straatweg 30', '1234AB', 'Enschede', 'Nederland', '06-12345678', 'NL12ABCD3456789012', 't. de vries'
+);
+
+INSERT INTO `customers` (
+`id` ,
+`firstName` ,
+`lastName` ,
+`address` ,
+`postalCode` ,
+`city` ,
+`country` ,
+`phoneNumber` ,
+`IBAN` ,
+`IBANholder`
+)
+VALUES (
+NULL , 'Hans', 'Janssen', 'Hoofdstraat 22', '5432EZ', 'Rotterdam', 'Nederland', '06-98765432', 'NL09QWER7654321098', 'h. janssen'
+);
