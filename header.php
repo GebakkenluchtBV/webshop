@@ -10,7 +10,7 @@ echo '
 	<meta name="Welcome to a webshop that sells air!" content="Gebakken Lucht">
 	<meta name="Gebakken Lucht, Luchtkasteel, Special Air" content="Gebakken Lucht webshop">
 
-	<link rel="stylesheet" type="text/css" href="styles/stylesheet.css"/>
+	<link rel="stylesheet" type="text/css" href="/styles/stylesheet.css"/>
 
 	</head>
 
@@ -23,13 +23,13 @@ echo '
 
 		 <!-- Header image moet zo breed zijn als de main (600px breed). -->
 
-			<img class="header-image" src="images/voor_achter.jpg">
+			<img class="header-image" src="/images/voor_achter.jpg">
 
 		</div>
 
 		<div class="titlebar">
 
-			<a href="index.php">
+			<a href="/index.php">
 				Home
 			</a>
 

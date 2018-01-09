@@ -49,9 +49,7 @@ CREATE TABLE `order_products`
 	`amount` INT DEFAULT 1,
 	`order_id` INT,
 	`product_id` INT,
-	PRIMARY KEY (`id` ASC),
-	FOREIGN KEY (`order_id`) REFERENCES orders(`id`),
-	FOREIGN KEY (`product_id`) REFERENCES products(`id`)
+	PRIMARY KEY (`id` ASC)
 )
 
 ;
@@ -63,8 +61,7 @@ CREATE TABLE `orders`
 	`status` INT DEFAULT 1,
 	`totalPrice` INT,
 	`customer_id` INT,
-	PRIMARY KEY (`id` ASC),
-	FOREIGN KEY (`customer_id`) REFERENCES customers(`id`)
+	PRIMARY KEY (`id` ASC)
 )
 
 ;
@@ -77,8 +74,7 @@ CREATE TABLE `products`
 	`description` LONGTEXT NULL,
 	`amountInStock` INT NULL,
 	`category_id` INT,
-	PRIMARY KEY (`id` ASC),
-	FOREIGN KEY (`category_id`) REFERENCES categories(`id`)
+	PRIMARY KEY (`id` ASC)
 )
 
 ;
