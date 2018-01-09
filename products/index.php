@@ -3,7 +3,7 @@ include '../header.php';
 require '../database.php';
 
 if (isset($_GET['id'])) {
-  $sql = "SELECT * FROM `products` JOIN `categories` ON `products`.`category_id` = `categories`.`id` WHERE products.id='".$_GET["id"]."';";
+  $sql = "SELECT * FROM `products` NATURAL JOIN `categories` WHERE products.product_id='".$_GET["id"]."';";
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
@@ -22,7 +22,7 @@ if (isset($_GET['id'])) {
     echo "<p>Geen product gevonden</p>";
   }
 } else {
-  $sql = "SELECT * FROM `products` JOIN `categories` ON `products`.`category_id` = `categories`.`id`;";
+  $sql = "SELECT * FROM `products` NATURAL JOIN `categories`;";
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
@@ -34,7 +34,7 @@ if (isset($_GET['id'])) {
             <p>'.$row["description"].'</p>
             <p>Prijs: €'.($row["price"]/100).'</p>
             <p>Categorie: '.$row["category"].'</p>
-            <a href="/products/index.php?id='.$row["id"].'">Meer informatie</a>
+            <a href="/products/index.php?id='.$row["product_id"].'">Meer informatie</a>
           </div>
         ';
       }

@@ -3,7 +3,7 @@ include '../header.php';
 require '../database.php';
 
 if (isset($_GET['id'])) {
-  $sql = "SELECT orders.*, customers.firstName AS customer_firstName, customers.lastName AS customer_lastName FROM `orders` JOIN `customers` ON `orders`.`customer_id` = `customers`.`id` WHERE orders.id='".$_GET["id"]."';";
+  $sql = "SELECT * FROM `orders` NATURAL JOIN `customers` WHERE orders.order_id='".$_GET["id"]."';";
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
@@ -13,13 +13,13 @@ if (isset($_GET['id'])) {
           <div class="order-card">
             <h1>Bestelling</h1>
             <ul>
-              <li><strong>Nummer:</strong> '.$row["id"].'</li>
+              <li><strong>Nummer:</strong> '.$row["order_id"].'</li>
               <li><strong>Besteld op:</strong> '.$row["orderedAt"].'</li>
               <li><strong>Status:</strong> '.$row["status"].'</li>
               <li><strong>Bedrag:</strong> '.$row["totalPrice"].'</li>
               <li><strong>Klant: </strong>
                 <a href="/customers/index.php?id='.$row["customer_id"].'">
-                 '.$row["customer_firstName"].' '.$row["customer_lastName"].'
+                 '.$row["firstName"].' '.$row["lastName"].'
                 </a>
               </li>
             </ul>
@@ -30,7 +30,7 @@ if (isset($_GET['id'])) {
     echo "<p>Geen bestelling gevonden</p>";
   }
 } else {
-  $sql = "SELECT orders.*, customers.firstName AS customer_firstName, customers.lastName AS customer_lastName FROM `orders` JOIN `customers` ON `orders`.`customer_id` = `customers`.`id`;";
+  $sql = "SELECT * FROM `orders` NATURAL JOIN `customers`;";
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
@@ -52,8 +52,8 @@ if (isset($_GET['id'])) {
         echo '
           <tr>
             <td>
-              <a href="/orders/index.php?id='.$row["id"].'">
-                '.$row["id"].'
+              <a href="/orders/index.php?id='.$row["order_id"].'">
+                '.$row["order_id"].'
               </a>
             </td>
             <td>'.$row["orderedAt"].'</td>
@@ -61,7 +61,7 @@ if (isset($_GET['id'])) {
             <td>€'.($row["totalPrice"]/100).'</td>
             <td>
               <a href="/customers/index.php?id='.$row["customer_id"].'">
-                '.$row["customer_firstName"].' '.$row["customer_lastName"].'
+                '.$row["firstName"].' '.$row["lastName"].'
               </a>
             </td>
           </tr>

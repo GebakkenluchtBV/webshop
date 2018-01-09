@@ -3,7 +3,7 @@ include '../header.php';
 require '../database.php';
 
 if (isset($_GET['id'])) {
-  $sql = "SELECT * FROM `customers` WHERE id='".$_GET["id"]."';";
+  $sql = "SELECT * FROM `customers` WHERE customer_id='".$_GET["id"]."';";
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
@@ -51,7 +51,7 @@ if (isset($_GET['id'])) {
         echo '
           <tr>
             <td>
-              <a href="/customers/index.php?id='.$row["id"].'">
+              <a href="/customers/index.php?id='.$row["customer_id"].'">
                 '.$row["firstName"].' '.$row["lastName"].'
               </a>
             </td>
