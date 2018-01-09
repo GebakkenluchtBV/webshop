@@ -144,3 +144,79 @@ INSERT INTO `customers` (
 VALUES (
 NULL , 'Hans', 'Janssen', 'Hoofdstraat 22', '5432EZ', 'Rotterdam', 'Nederland', '06-98765432', 'NL09QWER7654321098', 'h. janssen'
 );
+
+INSERT INTO `orders` (
+`id` ,
+`orderedAt` ,
+`status` ,
+`totalPrice` ,
+`customer_id`
+)
+VALUES (
+NULL ,
+CURRENT_TIMESTAMP , '1', '1500', '1'
+);
+
+INSERT INTO `order_products` (
+`id` ,
+`amount` ,
+`order_id` ,
+`product_id`
+)
+VALUES (
+NULL , '1', '1', '1'
+);
+
+INSERT INTO `orders` (
+`id` ,
+`orderedAt` ,
+`status` ,
+`totalPrice` ,
+`customer_id`
+)
+VALUES (
+NULL ,
+CURRENT_TIMESTAMP , '1', '15000', '1'
+);
+
+INSERT INTO `order_products` (
+`id` ,
+`amount` ,
+`order_id` ,
+`product_id`
+)
+VALUES (
+NULL , '1', '2', '2'
+);
+
+INSERT INTO `orders` (
+`id` ,
+`orderedAt` ,
+`status` ,
+`totalPrice` ,
+`customer_id`
+)
+VALUES (
+NULL ,
+CURRENT_TIMESTAMP , '1', '16500', '2'
+);
+
+INSERT INTO `order_products` (
+`id` ,
+`amount` ,
+`order_id` ,
+`product_id`
+)
+VALUES (
+NULL , '1', '3', '1'
+);
+
+INSERT INTO `order_products` (
+`id` ,
+`amount` ,
+`order_id` ,
+`product_id`
+)
+VALUES (
+NULL , '1', '3', '2'
+);

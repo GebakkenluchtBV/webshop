@@ -39,6 +39,10 @@
 				Klanten
 			</a>
 
+			<a href="/orders">
+				Bestellingen
+			</a>
+
 			<a href="contact.php">
 				Contact
 			</a>
