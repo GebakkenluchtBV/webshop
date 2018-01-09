@@ -11,53 +11,58 @@ if (isset($_GET['id'])) {
   if ($result->num_rows > 0) {
     // output data of each row
       $row = $result->fetch_assoc();
-      echo '
-        <div class="order-card">
-          <h1>Bestelling</h1>
-          <p>
-            <strong>Nummer:</strong> '.$row["order_id"].'<br>
-            <strong>Besteld op:</strong> '.$row["orderedAt"].'<br>
-            <strong>Status:</strong> '.$row["status"].'<br>
-            <strong>Bedrag:</strong> €'.($row["totalPrice"]/100).'<br>
-            <strong>Klant: </strong>
-            <a href="/customers/index.php?id='.$row["customer_id"].'">
-             '.$row["firstName"].' '.$row["lastName"].'
-            </a>
-          </p>
-          <h2>Artikelen</h2>
-          <table class="order-table">
-            <thead>
+        echo '
+          <div class="order-card">
+            <h1>Bestelling</h1>
+            <p>
+              <strong>Nummer:</strong> '.$row["order_id"].'<br>
+              <strong>Besteld op:</strong> '.$row["orderedAt"].'<br>
+              <strong>Status:</strong> '.$row["status"].'<br>
+              <strong>Bedrag:</strong> €'.($row["totalPrice"]/100).'<br>
+              <strong>Klant: </strong>
+              <a href="/customers/index.php?id='.$row["customer_id"].'">
+               '.$row["firstName"].' '.$row["lastName"].'
+              </a>
+            </p>
+            <h2>Artikelen</h2>
+            <table class="order-table">
+              <thead>
+                <tr>
+                  <th>Artikel</th>
+                  <th>Aantal</th>
+                  <th>Prijs</th>
+                </tr>
+              </thead>
+        ';
+        if ($products->num_rows > 0) {
+          while($item = $products->fetch_assoc()) {
+            echo '
               <tr>
-                <th>Artikel</th>
-                <th>Aantal</th>
-                <th>Prijs</th>
+                <td>
+                  <a href="/products/index.php?id='.$item["product_id"].'">
+                    '.$item["name"].'
+                  </a>
+                </td>
+                <td>'.$item["amount"].'</td>
+                <td>€'.($item["price"]/100).'</td>
               </tr>
-            </thead>
-      ';
-      if ($products->num_rows > 0) {
-        while($item = $products->fetch_assoc()) {
-          echo '
-            <tr>
-              <td>
-                <a href="/products/index.php?id='.$item["product_id"].'">
-                  '.$item["name"].'
-                </a>
-              </td>
-              <td>'.$item["amount"].'</td>
-              <td>€'.($item["price"]/100).'</td>
-            </tr>
-          ';
+            ';
+          }
         }
-      }
-      echo '
-          </table>
-        </div>
-      ';
+        echo '
+            </table>
+          </div>
+        ';
   } else {
     echo "<p>Geen bestelling gevonden</p>";
   }
 } else {
-  $sql = "SELECT * FROM `orders` NATURAL JOIN `customers`;";
+  $sql;
+  if ($_SESSION["customer"]["isAdmin"]) {
+    $sql = "SELECT * FROM `orders` NATURAL JOIN `customers`;";
+  } else {
+    $sql = "SELECT * FROM `orders` NATURAL JOIN `customers` WHERE NOT status='0' AND customer_id='".$_SESSION["customer"]["customer_id"]."';";
+  }
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {

@@ -48,18 +48,24 @@ if (isset($_SESSION["customer"])) {
 				Klanten
 			</a>
 		';
-	} else {
+	}
+	echo '
+		<a href="/customers/index.php?id='.$_SESSION["customer"]["customer_id"].'">
+			Account
+		</a>
+
+		<a href="/orders">
+			Bestellingen
+		</a>
+	';
+	if (isset($_SESSION["basket"])) {
 		echo '
-			<a href="/customers/index.php?id='.$_SESSION["customer"]["customer_id"].'">
-				Account
+			<a href="/basket.php">
+				Winkelmandje
 			</a>
 		';
 	}
 	echo '
-		<a href="/orders">
-			Bestellingen
-		</a>
-
 		<a href="/logout.php">
 			Uitloggen
 		</a>

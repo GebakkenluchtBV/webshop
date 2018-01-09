@@ -15,6 +15,12 @@ if (isset($_GET['id'])) {
           <p>'.$row["description"].'</p>
           <p>Prijs: €'.($row["price"]/100).'</p>
           <p>Categorie: '.$row["category"].'</p>
+          <p>Voorraad: '.$row["amountInStock"].'</p>
+          <form action="/basket.php" method="post">
+            <input type="number" placeholder="Aantal" name="amount" value="1" min="1" max="'.$row["amountInStock"].'" required>
+            <input type="hidden" name="product_id" value="'.$row["product_id"].'">
+            <button type="submit">Toevoegen aan winkelwagen</button>
+          </form>
         </div>
       ';
   } else {

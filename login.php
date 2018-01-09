@@ -18,6 +18,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     $error = 'Klant niet gevonden';
   }
 }
+$conn->close();
 
 include 'header.php';
 
