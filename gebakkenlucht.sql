@@ -1,18 +1,19 @@
 /* Drop Tables */
+SET FOREIGN_KEY_CHECKS=0;
 
-DROP TABLE IF EXISTS `categories` CASCADE
+DROP TABLE IF EXISTS `products` CASCADE
 ;
 
 DROP TABLE IF EXISTS `customers` CASCADE
 ;
 
-DROP TABLE IF EXISTS `order_products` CASCADE
-;
-
 DROP TABLE IF EXISTS `orders` CASCADE
 ;
 
-DROP TABLE IF EXISTS `products` CASCADE
+DROP TABLE IF EXISTS `categories` CASCADE
+;
+
+DROP TABLE IF EXISTS `order_products` CASCADE
 ;
 
 /* Create Tables */
@@ -20,7 +21,7 @@ DROP TABLE IF EXISTS `products` CASCADE
 CREATE TABLE `categories`
 (
 	`id` INT AUTO_INCREMENT,
-	`name` VARCHAR(50),
+	`category` VARCHAR(50),
 	PRIMARY KEY (`id` ASC)
 )
 
@@ -43,17 +44,6 @@ CREATE TABLE `customers`
 
 ;
 
-CREATE TABLE `order_products`
-(
-	`id` INT AUTO_INCREMENT,
-	`amount` INT DEFAULT 1,
-	`order_id` INT,
-	`product_id` INT,
-	PRIMARY KEY (`id` ASC)
-)
-
-;
-
 CREATE TABLE `orders`
 (
 	`id` INT AUTO_INCREMENT,
@@ -61,7 +51,8 @@ CREATE TABLE `orders`
 	`status` INT DEFAULT 1,
 	`totalPrice` INT,
 	`customer_id` INT,
-	PRIMARY KEY (`id` ASC)
+	PRIMARY KEY (`id` ASC),
+	FOREIGN KEY (`customer_id`) REFERENCES customers(`id`)
 )
 
 ;
@@ -74,23 +65,38 @@ CREATE TABLE `products`
 	`description` LONGTEXT NULL,
 	`amountInStock` INT NULL,
 	`category_id` INT,
-	PRIMARY KEY (`id` ASC)
+	PRIMARY KEY (`id` ASC),
+	FOREIGN KEY (`category_id`) REFERENCES categories(`id`)
 )
 
 ;
 
+CREATE TABLE `order_products`
+(
+	`id` INT AUTO_INCREMENT,
+	`amount` INT DEFAULT 1,
+	`order_id` INT,
+	`product_id` INT,
+	PRIMARY KEY (`id` ASC),
+	FOREIGN KEY (`order_id`) REFERENCES orders(`id`),
+	FOREIGN KEY (`product_id`) REFERENCES products(`id`)
+)
+
+;
+
+SET FOREIGN_KEY_CHECKS=1;
 
 /* Seed tables */
 
 
 INSERT INTO `categories` (
-	`name`
+	`category`
 ) VALUES (
 	"luchtflessen"
 );
 
 INSERT INTO `categories` (
-	`name`
+	`category`
 ) VALUES (
 	"luchtkastelen"
 );
