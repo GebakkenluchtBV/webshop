@@ -16,11 +16,21 @@ if (isset($_GET['id'])) {
           <p>Prijs: €'.($row["price"]/100).'</p>
           <p>Categorie: '.$row["category"].'</p>
           <p>Voorraad: '.$row["amountInStock"].'</p>
+      ';
+      if (isset($_SESSION['customer'])) {
+        echo '
           <form action="/basket.php" method="post">
             <input type="number" placeholder="Aantal" name="amount" value="1" min="1" max="'.$row["amountInStock"].'" required>
             <input type="hidden" name="product_id" value="'.$row["product_id"].'">
             <button type="submit">Toevoegen aan winkelwagen</button>
           </form>
+        ';
+      } else {
+        echo '
+          <p><a href="/login.php">Log in om te bestellen</a></p>
+        ';
+      }
+      echo '
         </div>
       ';
   } else {

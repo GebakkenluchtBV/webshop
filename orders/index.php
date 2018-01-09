@@ -1,7 +1,7 @@
 <?php
 include '../header.php';
 require '../database.php';
-
+$status = array("In winkelwagen", "Besteld", "Betaald", "Verwerkt", "Verzonden", "Geannuleerd");
 if (isset($_GET['id'])) {
   $sql = "SELECT * FROM `orders` NATURAL JOIN `customers` WHERE orders.order_id='".$_GET["id"]."';";
   $result = $conn->query($sql);
@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
             <p>
               <strong>Nummer:</strong> '.$row["order_id"].'<br>
               <strong>Besteld op:</strong> '.$row["orderedAt"].'<br>
-              <strong>Status:</strong> '.$row["status"].'<br>
+              <strong>Status:</strong> '.$status[$row["status"]].'<br>
               <strong>Bedrag:</strong> €'.($row["totalPrice"]/100).'<br>
               <strong>Klant: </strong>
               <a href="/customers/index.php?id='.$row["customer_id"].'">
@@ -91,7 +91,7 @@ if (isset($_GET['id'])) {
               </a>
             </td>
             <td>'.$row["orderedAt"].'</td>
-            <td>'.$row["status"].'</td>
+            <td>'.$status[$row["status"]].'</td>
             <td>€'.($row["totalPrice"]/100).'</td>
             <td>
               <a href="/customers/index.php?id='.$row["customer_id"].'">
