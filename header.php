@@ -1,3 +1,7 @@
+<?php
+// Start the session
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,18 +39,40 @@
 				Producten
 			</a>
 
+<?php
+
+if (isset($_SESSION["customer"])) {
+	if ($_SESSION["customer"]["isAdmin"]) {
+		echo '
 			<a href="/customers">
 				Klanten
 			</a>
-
-			<a href="/orders">
-				Bestellingen
+		';
+	} else {
+		echo '
+			<a href="/customers/index.php?id='.$_SESSION["customer"]["customer_id"].'">
+				Account
 			</a>
+		';
+	}
+	echo '
+		<a href="/orders">
+			Bestellingen
+		</a>
 
-			<a href="contact.php">
-				Contact
-			</a>
+		<a href="/logout.php">
+			Uitloggen
+		</a>
+	';
+} else {
+	echo '
+		<a href="/login.php">
+			Inloggen
+		</a>
+	';
+}
 
+?>
 
 		</div>
 

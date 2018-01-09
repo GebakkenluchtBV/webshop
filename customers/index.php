@@ -8,24 +8,24 @@ if (isset($_GET['id'])) {
 
   if ($result->num_rows > 0) {
     // output data of each row
-      while($row = $result->fetch_assoc()) {
-        echo '
-          <div class="customer-card">
-            <h1>Klant</h1>
-            <ul>
-              <li><strong>Voornaam:</strong> '.$row["firstName"].'</li>
-              <li><strong>Achternaam:</strong> '.$row["lastName"].'</li>
-              <li><strong>Adres:</strong> '.$row["address"].'</li>
-              <li><strong>Postcode:</strong> '.$row["postalCode"].'</li>
-              <li><strong>Plaats:</strong> '.$row["city"].'</li>
-              <li><strong>Land:</strong> '.$row["country"].'</li>
-              <li><strong>Telefoonnummer:</strong> '.$row["phoneNumber"].'</li>
-              <li><strong>IBAN:</strong> '.$row["IBAN"].'</li>
-              <li><strong>Rekeninghouder:</strong> '.$row["IBANholder"].'</li>
-            </ul>
-          </div>
-        ';
-      }
+      $row = $result->fetch_assoc();
+      echo '
+        <div class="customer-card">
+          <h1>Klant</h1>
+          <ul>
+            <li><strong>Voornaam:</strong> '.$row["firstName"].'</li>
+            <li><strong>Achternaam:</strong> '.$row["lastName"].'</li>
+            <li><strong>Adres:</strong> '.$row["address"].'</li>
+            <li><strong>Postcode:</strong> '.$row["postalCode"].'</li>
+            <li><strong>Plaats:</strong> '.$row["city"].'</li>
+            <li><strong>Land:</strong> '.$row["country"].'</li>
+            <li><strong>Telefoonnummer:</strong> '.$row["phoneNumber"].'</li>
+            <li><strong>IBAN:</strong> '.$row["IBAN"].'</li>
+            <li><strong>Rekeninghouder:</strong> '.$row["IBANholder"].'</li>
+            <li><strong>Gebruikersnaam:</strong> '.$row["username"].'</li>
+          </ul>
+        </div>
+      ';
   } else {
     echo "<p>Geen klant gevonden</p>";
   }

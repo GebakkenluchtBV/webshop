@@ -8,16 +8,15 @@ if (isset($_GET['id'])) {
 
   if ($result->num_rows > 0) {
     // output data of each row
-      while($row = $result->fetch_assoc()) {
-        echo '
-          <div class="product-card">
-            <h1>'.$row["name"].'</h1>
-            <p>'.$row["description"].'</p>
-            <p>Prijs: €'.($row["price"]/100).'</p>
-            <p>Categorie: '.$row["category"].'</p>
-          </div>
-        ';
-      }
+      $row = $result->fetch_assoc();
+      echo '
+        <div class="product-card">
+          <h1>'.$row["name"].'</h1>
+          <p>'.$row["description"].'</p>
+          <p>Prijs: €'.($row["price"]/100).'</p>
+          <p>Categorie: '.$row["category"].'</p>
+        </div>
+      ';
   } else {
     echo "<p>Geen product gevonden</p>";
   }

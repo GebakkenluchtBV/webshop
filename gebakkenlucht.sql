@@ -39,6 +39,9 @@ CREATE TABLE `customers`
 	`phoneNumber` VARCHAR(50) NULL,
 	`IBAN` VARCHAR(37) NULL,
 	`IBANholder` VARCHAR(50) NULL,
+	`username` VARCHAR(50) UNIQUE,
+	`password` VARCHAR(50),
+	`isAdmin` BOOLEAN,
 	PRIMARY KEY (`customer_id` ASC)
 )
 
@@ -122,10 +125,13 @@ INSERT INTO `customers` (
 `country` ,
 `phoneNumber` ,
 `IBAN` ,
-`IBANholder`
+`IBANholder`,
+`username`,
+`password`,
+`isAdmin`
 )
 VALUES (
-'Theo', 'de Vries', 'Straatweg 30', '1234AB', 'Enschede', 'Nederland', '06-12345678', 'NL12ABCD3456789012', 't. de vries'
+'Theo', 'de Vries', 'Straatweg 30', '1234AB', 'Enschede', 'Nederland', '06-12345678', 'NL12ABCD3456789012', 't. de vries', 'theo', 'password', 0
 );
 
 INSERT INTO `customers` (
@@ -137,10 +143,31 @@ INSERT INTO `customers` (
 `country` ,
 `phoneNumber` ,
 `IBAN` ,
-`IBANholder`
+`IBANholder`,
+`username`,
+`password`,
+`isAdmin`
 )
 VALUES (
-'Hans', 'Janssen', 'Hoofdstraat 22', '5432EZ', 'Rotterdam', 'Nederland', '06-98765432', 'NL09QWER7654321098', 'h. janssen'
+'Hans', 'Janssen', 'Hoofdstraat 22', '5432EZ', 'Rotterdam', 'Nederland', '06-98765432', 'NL09QWER7654321098', 'h. janssen', 'hans', 'password', 0
+);
+
+INSERT INTO `customers` (
+`firstName` ,
+`lastName` ,
+`address` ,
+`postalCode` ,
+`city` ,
+`country` ,
+`phoneNumber` ,
+`IBAN` ,
+`IBANholder`,
+`username`,
+`password`,
+`isAdmin`
+)
+VALUES (
+'Admin', 'Administrator', 'Saxion', '5432EZ', 'Enschede', 'Nederland', '06-98765432', 'NL09QWER7654321098', 'admin', 'admin', 'password', 1
 );
 
 INSERT INTO `orders` (
