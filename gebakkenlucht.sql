@@ -103,4 +103,10 @@ INSERT INTO `products` (
 	`name`, `price`, `description`, `amountInStock`, `category_id`
 ) VALUES (
 	"Gebakken Lucht", 1500, "Zeer praktisch, gebakken lucht vers uit een fles!", 50, 1
-)
+);
+
+INSERT INTO `products` (
+	`name`, `price`, `description`, `amountInStock`, `category_id`
+) VALUES (
+	"XXL luchtkasteel", 15000, "Super lomp groot kasteel voor in de lucht.", 2, 2
+);
