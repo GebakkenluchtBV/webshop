@@ -30,6 +30,7 @@ if (isset($_GET['id'])) {
                 <tr>
                   <th>Artikel</th>
                   <th>Aantal</th>
+                  <th>Per stuk</th>
                   <th>Prijs</th>
                 </tr>
               </thead>
@@ -45,6 +46,7 @@ if (isset($_GET['id'])) {
                 </td>
                 <td>'.$item["amount"].'</td>
                 <td>€'.($item["price"]/100).'</td>
+                <td>€'.(($item["price"]*$item["amount"])/100).'</td>
               </tr>
             ';
           }

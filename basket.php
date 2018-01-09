@@ -103,6 +103,7 @@ if ($result->num_rows > 0 && $products->num_rows > 0) {
   echo '
       </table>
       <p><strong>Totale prijs: €'.($totalPrice/100).'</strong></p>
+      <p><a href="/order.php">Bestellen</a></p>
     </div>
   ';
 } else {
