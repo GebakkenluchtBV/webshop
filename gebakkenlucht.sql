@@ -82,7 +82,7 @@ CREATE TABLE `order_products`
 	`product_id` INT,
 	PRIMARY KEY (`order_products_id` ASC),
 	FOREIGN KEY (`order_id`) REFERENCES orders(`order_id`),
-	FOREIGN KEY (`product_id`) REFERENCES products(`product_id`)
+	FOREIGN KEY (`product_id`) REFERENCES products(`product_id`) ON DELETE CASCADE
 )
 
 ;

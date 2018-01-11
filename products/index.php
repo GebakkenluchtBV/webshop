@@ -37,6 +37,9 @@ if (isset($_GET['id'])) {
     echo "<p>Geen product gevonden</p>";
   }
 } else {
+  echo '<h1>Producten</h1>';
+  if ($isAdmin) echo '<a href="/products/create.php">Product toevoegen</a>';
+
   $sql = "SELECT * FROM `products` NATURAL JOIN `categories`;";
   $result = $conn->query($sql);
 
@@ -45,11 +48,12 @@ if (isset($_GET['id'])) {
       while($row = $result->fetch_assoc()) {
         echo '
           <div class="product-card">
-            <h1>'.$row["name"].'</h1>
+            <h3>'.$row["name"].'</h3>
             <p>'.$row["description"].'</p>
             <p>Prijs: €'.($row["price"]/100).'</p>
             <p>Categorie: '.$row["category"].'</p>
             <a href="/products/index.php?id='.$row["product_id"].'">Meer informatie</a>
+            <a href="/products/delete.php?id='.$row["product_id"].'">Product verwijderen</a>
           </div>
         ';
       }

@@ -2,6 +2,7 @@
 include '../header.php';
 require '../database.php';
 $status = array("In winkelwagen", "Besteld", "Betaald", "Verwerkt", "Verzonden", "Geannuleerd");
+
 if (isset($_GET['id'])) {
   $sql = "SELECT * FROM `orders` NATURAL JOIN `customers` WHERE orders.order_id='".$_GET["id"]."';";
   $result = $conn->query($sql);

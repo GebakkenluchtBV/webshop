@@ -1,6 +1,11 @@
 <?php
 // Start the session
 session_start();
+
+$isAdmin = false;
+if (isset($_SESSION["customer"])) {
+  $isAdmin = $_SESSION["customer"]["isAdmin"];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
