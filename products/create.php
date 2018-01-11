@@ -6,16 +6,16 @@ if (isset($_POST["name"]) && isset($_POST["price"]) && isset($_POST["description
   $sql = "INSERT INTO `products` (`name`, `price`, `description`, `amountInStock`, `category_id`) VALUES ('".$_POST["name"]."', '".$_POST["price"]."', '".$_POST["description"]."', '".$_POST["amountInStock"]."', '".$_POST["category_id"]."');";
   $result = $conn->query($sql);
   if ($result === TRUE) {
-      echo "<p>Product aangemaakt!</p>";
+      echo '<div class="success">Product aangemaakt!</div>';
   } else {
-      echo "Error creating record: " . $conn->error;
+      echo '<div class="error">Error creating record: ' . $conn->error . '</div>';
   }
 } else {
   $sql = "SELECT * FROM `categories`;";
   $result = $conn->query($sql);
 
   echo '
-    <div class="create-product-card">
+    <div class="create-product-card card">
       <h1>Product aanmaken</h1>
       <form action="/products/create.php" method="post">
         <label for="name">Naam</label><br>

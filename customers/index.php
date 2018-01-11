@@ -10,24 +10,24 @@ if (isset($_GET['id'])) {
     // output data of each row
       $row = $result->fetch_assoc();
       echo '
-        <div class="customer-card">
+        <div class="customer-card card">
           <h1>Klant</h1>
-          <ul>
-            <li><strong>Voornaam:</strong> '.$row["firstName"].'</li>
-            <li><strong>Achternaam:</strong> '.$row["lastName"].'</li>
-            <li><strong>Adres:</strong> '.$row["address"].'</li>
-            <li><strong>Postcode:</strong> '.$row["postalCode"].'</li>
-            <li><strong>Plaats:</strong> '.$row["city"].'</li>
-            <li><strong>Land:</strong> '.$row["country"].'</li>
-            <li><strong>Telefoonnummer:</strong> '.$row["phoneNumber"].'</li>
-            <li><strong>IBAN:</strong> '.$row["IBAN"].'</li>
-            <li><strong>Rekeninghouder:</strong> '.$row["IBANholder"].'</li>
-            <li><strong>Gebruikersnaam:</strong> '.$row["username"].'</li>
-          </ul>
+          <p>
+            <strong>Voornaam:</strong> '.$row["firstName"].'<br>
+            <strong>Achternaam:</strong> '.$row["lastName"].'<br>
+            <strong>Adres:</strong> '.$row["address"].'<br>
+            <strong>Postcode:</strong> '.$row["postalCode"].'<br>
+            <strong>Plaats:</strong> '.$row["city"].'<br>
+            <strong>Land:</strong> '.$row["country"].'<br>
+            <strong>Telefoonnummer:</strong> '.$row["phoneNumber"].'<br>
+            <strong>IBAN:</strong> '.$row["IBAN"].'<br>
+            <strong>Rekeninghouder:</strong> '.$row["IBANholder"].'<br>
+            <strong>Gebruikersnaam:</strong> '.$row["username"].'<br>
+          </p>
         </div>
       ';
   } else {
-    echo "<p>Geen klant gevonden</p>";
+    echo '<div class="error">Geen klant gevonden</div>';
   }
 } else {
   $sql = "SELECT * FROM `customers`;";
@@ -36,6 +36,7 @@ if (isset($_GET['id'])) {
   if ($result->num_rows > 0) {
     // output data of each row
     echo '
+    <div class="customers-card card">
     <h1>Klanten</h1>
     <table class="customers-table">
       <thead>
@@ -61,9 +62,9 @@ if (isset($_GET['id'])) {
           </tr>
         ';
       }
-    echo '</table>';
+    echo '</table></div>';
   } else {
-    echo "<p>Geen klanten gevonden</p>";
+    echo '<div class="error">Geen klanten gevonden</div>';
   }
 }
 $conn->close();

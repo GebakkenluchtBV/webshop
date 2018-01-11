@@ -28,19 +28,18 @@ if (isset($_SESSION["customer"])) {
 
 		<div class="header">
 
-		 <!-- Header image moet zo breed zijn als de main (600px breed). -->
-
 			<img class="header-image" src="/images/voor_achter.jpg">
 
 		</div>
 
 		<div class="titlebar">
+      <nav>
 
-			<a href="/index.php">
+			<a class="nav-item" href="/index.php">
 				Home
 			</a>
 
-			<a href="/products">
+			<a class="nav-item" href="/products">
 				Producten
 			</a>
 
@@ -49,42 +48,42 @@ if (isset($_SESSION["customer"])) {
 if (isset($_SESSION["customer"])) {
 	if ($_SESSION["customer"]["isAdmin"]) {
 		echo '
-			<a href="/customers">
+			<a class="nav-item" href="/customers">
 				Klanten
 			</a>
 		';
 	}
 	echo '
-		<a href="/customers/index.php?id='.$_SESSION["customer"]["customer_id"].'">
+		<a class="nav-item" href="/customers/index.php?id='.$_SESSION["customer"]["customer_id"].'">
 			Account
 		</a>
 
-		<a href="/orders">
+		<a class="nav-item" href="/orders">
 			Bestellingen
 		</a>
 	';
 	if (isset($_SESSION["basket"])) {
 		echo '
-			<a href="/basket.php">
+			<a class="nav-item basket" href="/basket.php">
 				Winkelmandje
 			</a>
 		';
 	}
 	echo '
-		<a href="/logout.php">
+		<a class="nav-item" href="/logout.php">
 			Uitloggen
 		</a>
 	';
 } else {
 	echo '
-		<a href="/login.php">
+		<a class="nav-item" href="/login.php">
 			Inloggen
 		</a>
 	';
 }
 
 ?>
-
+      </nav>
 		</div>
 
 		<div class="content">

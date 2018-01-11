@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
     // output data of each row
       $row = $result->fetch_assoc();
         echo '
-          <div class="order-card">
+          <div class="order-card card">
             <h1>Bestelling</h1>
             <p>
               <strong>Nummer:</strong> '.$row["order_id"].'<br>
@@ -57,7 +57,7 @@ if (isset($_GET['id'])) {
           </div>
         ';
   } else {
-    echo "<p>Geen bestelling gevonden</p>";
+    echo '<div class="error">Geen bestelling gevonden</div>';
   }
 } else {
   $sql;
@@ -71,6 +71,7 @@ if (isset($_GET['id'])) {
   if ($result->num_rows > 0) {
     // output data of each row
     echo '
+    <div class="order-card card">
     <h1>Bestellingen</h1>
     <table class="orders-table">
       <thead>
@@ -102,9 +103,9 @@ if (isset($_GET['id'])) {
           </tr>
         ';
       }
-    echo '</table>';
+    echo '</table></div>';
   } else {
-    echo "<p>Geen bestellingen gevonden</p>";
+    echo '<div class="error">Geen bestellingen gevonden</div>';
   }
 }
 $conn->close();

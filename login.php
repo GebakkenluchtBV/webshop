@@ -29,7 +29,7 @@ if (isset($_SESSION["customer"])) {
     echo '<div class="error">'.$error.'</div>';
   }
   echo '
-    <div class="login-card">
+    <div class="login-card card">
       <h1>Inloggen</h1>
       <form action="/login.php" method="post">
         <label>Gebruikersnaam:</label><br>

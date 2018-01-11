@@ -1,0 +1,101 @@
+/*
+Main site functions
+*/
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #181B20;
+}
+
+h1, h2, h3 {
+	margin: 0px;
+	padding: 0px;
+	text-transform: lowercase;
+	font-family: 'Abel', sans-serif;
+	font-weight: 400;
+	color: #3FA449;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h2 {
+	font-size: 2.4em;
+}
+
+h3 {
+	font-size: 1.6em;
+}
+
+img.border {
+	border: 6px solid #EEE7DF;
+}
+
+img.alignleft {
+	float: left;
+	margin-right: 25px;
+}
+
+img.alignright {
+	float: right;
+}
+
+img.aligncenter {
+	margin: 0px auto;
+}
+
+
+/*
+T-t-t-t-t-time for divjes
+*/
+
+
+.main {
+	width: 600px;
+	margin: auto;
+}
+
+.header {
+	width: 600px;
+}
+
+.header .header-image {
+	width: 600px;
+}
+
+.titlebar {
+	background-color: lightgray;
+	width: 600px;
+	height: 40px;
+
+}
+
+.titlebar a {
+	float: left;
+	margin: 10px;
+	color: red;
+}
+
+.content{
+	background-color: lightblue;
+
+}
+
+.footer{
+	background-color: lightgray;
+
+}
+
+.p {
+	font-family: sans-serif;
+	font-size: 12px;
+}
+
+
+
+

@@ -31,7 +31,7 @@ if (isset($_POST["order_id"]) && isset($_POST["totalPrice"])) {
     // output data of each row
     $row = $result->fetch_assoc();
     echo '
-      <div class="order-card">
+      <div class="order-card card">
         <h1>Nieuwe bestelling</h1>
         <p>
           <strong>Besteld op:</strong> '.$row["orderedAt"].'<br>
@@ -79,7 +79,7 @@ if (isset($_POST["order_id"]) && isset($_POST["totalPrice"])) {
   }
 } else {
   echo '
-    <div class="basket-card">
+    <div class="basket-card card">
       <h1>Je winkelmandje is nog leeg!</h1>
       <p>Ga naar de producten pagina om een artikel aan het winkelmandje toe te voegen</p>
     </div>

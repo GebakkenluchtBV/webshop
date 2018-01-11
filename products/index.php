@@ -10,17 +10,17 @@ if (isset($_GET['id'])) {
     // output data of each row
       $row = $result->fetch_assoc();
       echo '
-        <div class="product-card">
+        <div class="product-card card">
           <h1>'.$row["name"].'</h1>
           <p>'.$row["description"].'</p>
-          <p>Prijs: €'.($row["price"]/100).'</p>
-          <p>Categorie: '.$row["category"].'</p>
-          <p>Voorraad: '.$row["amountInStock"].'</p>
+          <p><strong>Prijs:</strong> €'.($row["price"]/100).'
+          <strong>Categorie:</strong> '.$row["category"].'
+          <strong>Voorraad:</strong> '.$row["amountInStock"].'</p>
       ';
       if (isset($_SESSION['customer'])) {
         echo '
           <form action="/basket.php" method="post">
-            <input type="number" placeholder="Aantal" name="amount" value="1" min="1" max="'.$row["amountInStock"].'" required>
+            <input class="inline" type="number" placeholder="Aantal" name="amount" value="1" min="1" max="'.$row["amountInStock"].'" required>
             <input type="hidden" name="product_id" value="'.$row["product_id"].'">
             <button type="submit">Toevoegen aan winkelwagen</button>
           </form>
@@ -34,11 +34,12 @@ if (isset($_GET['id'])) {
         </div>
       ';
   } else {
-    echo "<p>Geen product gevonden</p>";
+    echo '<div class="error">Geen product gevonden</div>';
   }
 } else {
-  echo '<h1>Producten</h1>';
-  if ($isAdmin) echo '<a href="/products/create.php">Product toevoegen</a>';
+  echo '<h1 class="title">Producten';
+  if ($isAdmin) echo '<a href="/products/create.php" class="title-button">Product toevoegen</a>';
+  echo '</h1>';
 
   $sql = "SELECT * FROM `products` NATURAL JOIN `categories`;";
   $result = $conn->query($sql);
@@ -47,11 +48,11 @@ if (isset($_GET['id'])) {
     // output data of each row
       while($row = $result->fetch_assoc()) {
         echo '
-          <div class="product-card">
+          <div class="product-card card">
             <h3>'.$row["name"].'</h3>
             <p>'.$row["description"].'</p>
-            <p>Prijs: €'.($row["price"]/100).'</p>
-            <p>Categorie: '.$row["category"].'</p>
+            <p><strong>Prijs:</strong> €'.($row["price"]/100).'
+            <strong>Categorie:</strong> '.$row["category"].'</p>
             <a href="/products/index.php?id='.$row["product_id"].'">Meer informatie</a>
         ';
         if ($isAdmin) {
@@ -65,7 +66,7 @@ if (isset($_GET['id'])) {
         ';
       }
   } else {
-    echo "<p>Geen producten gevonden</p>";
+    echo '<div class="error">Geen producten gevonden</div>';
   }
 }
 $conn->close();

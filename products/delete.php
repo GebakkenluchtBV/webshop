@@ -10,7 +10,7 @@ if (isset($_GET['id']) && $isAdmin) {
   // output data of each row
     $row = $result->fetch_assoc();
     echo '
-      <div class="delete-product-card">
+      <div class="delete-product-card card">
         <h1>Weet je zeker dat je dit product wil verwijderen?</h1>
         <p><strong>Product: </strong>'.$row["name"].'</strong></p>
         <form action="/products/delete.php" method="post">
@@ -20,18 +20,18 @@ if (isset($_GET['id']) && $isAdmin) {
       </div>
     ';
   } else {
-    echo "<p>Geen product gevonden</p>";
+    echo '<div class="error">Geen product gevonden</div>';
   }
 } else if (isset($_POST['product_id']) && $isAdmin) {
   $sql = "DELETE FROM `products` WHERE product_id='".$_POST["product_id"]."';";
   $result = $conn->query($sql);
   if ($result === TRUE) {
-      echo "<p>Product verwijderd!</p>";
+      echo '<div class="success">Product verwijderd!</div>';
   } else {
-      echo "Error deleting record: " . $conn->error;
+      echo '<div class="error">Error deleting record: ' . $conn->error . '</div>';
   }
 } else {
-  echo '<p>Pagina niet gevonden</p>';
+  echo '<div class="error">Geen product gevonden</div>';
 }
 $conn->close();
 

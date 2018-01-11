@@ -6,9 +6,9 @@ if (isset($_POST["name"]) && isset($_POST["price"]) && isset($_POST["description
   $sql = "UPDATE `products` SET `name`='".$_POST["name"]."', `price`='".$_POST["price"]."', `description`='".$_POST["description"]."', `amountInStock`='".$_POST["amountInStock"]."' WHERE product_id='".$_POST["product_id"]."';";
   $result = $conn->query($sql);
   if ($result === TRUE) {
-      echo "<p>Product aangepast!</p>";
+      echo '<div class="success">Product aangepast!</div>';
   } else {
-      echo "Error creating record: " . $conn->error;
+      echo '<div class="error">Error creating record: ' . $conn->error . '</div>';
   }
 } else if (isset($_GET["id"])){
   $sql = "SELECT * FROM `products` WHERE `product_id`='".$_GET["id"]."';";
@@ -16,7 +16,7 @@ if (isset($_POST["name"]) && isset($_POST["price"]) && isset($_POST["description
   if ($result->num_rows > 0) {
   $row = $result->fetch_assoc();
     echo '
-      <div class="create-product-card">
+      <div class="create-product-card card">
         <h1>Product aanpassen</h1>
         <form action="/products/update.php" method="post">
           <label for="name">Naam</label><br>
@@ -34,7 +34,7 @@ if (isset($_POST["name"]) && isset($_POST["price"]) && isset($_POST["description
     ';
   }
 } else {
-  echo '<p>Geen product gevonden</p>';
+  echo '<div class="error">Geen producten gevonden</div>';
 }
 $conn->close();
 

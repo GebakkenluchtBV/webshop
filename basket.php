@@ -59,7 +59,7 @@ if ($result->num_rows > 0 && $products->num_rows > 0) {
   // output data of each row
   $row = $result->fetch_assoc();
   echo '
-    <div class="order-card">
+    <div class="order-card card">
       <h1>Winkelmandje</h1>
       <table class="order-table">
         <thead>
@@ -84,7 +84,7 @@ if ($result->num_rows > 0 && $products->num_rows > 0) {
         <td>
           <form action="/basket.php" method="post">
             <input type="hidden" name="order_products_id" value="'.$item["order_products_id"].'">
-            <input type="number" name="amount" value="'.$item["amount"].'" min="0" max="'.$item["amountInStock"].'">
+            <input class="inline" type="number" name="amount" value="'.$item["amount"].'" min="0" max="'.$item["amountInStock"].'">
             <button type="submit">Aanpassen</button>
           </form>
         </td>
@@ -103,12 +103,12 @@ if ($result->num_rows > 0 && $products->num_rows > 0) {
   echo '
       </table>
       <p><strong>Totale prijs: €'.($totalPrice/100).'</strong></p>
-      <p><a href="/order.php">Bestellen</a></p>
+      <p><a class="button" href="/order.php">Bestellen</a></p>
     </div>
   ';
 } else {
   echo '
-    <div class="basket-card">
+    <div class="basket-card card">
       <h1>Je winkelmandje is nog leeg!</h1>
       <p>Ga naar de producten pagina om een artikel aan het winkelmandje toe te voegen</p>
     </div>
