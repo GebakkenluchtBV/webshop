@@ -53,7 +53,14 @@ if (isset($_GET['id'])) {
             <p>Prijs: €'.($row["price"]/100).'</p>
             <p>Categorie: '.$row["category"].'</p>
             <a href="/products/index.php?id='.$row["product_id"].'">Meer informatie</a>
+        ';
+        if ($isAdmin) {
+          echo '
             <a href="/products/delete.php?id='.$row["product_id"].'">Product verwijderen</a>
+            <a href="/products/update.php?id='.$row["product_id"].'">Product aanpassen</a>
+          ';
+        }
+        echo '
           </div>
         ';
       }
